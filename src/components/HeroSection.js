@@ -1,14 +1,18 @@
+import { useState, useContext } from "react";
+
 import fieldsLogo1 from "../assets/images/doctors-fields-logo.png";
 import fieldsLogo2 from "../assets/images/doctors-fields-logo-2.png";
 import check from "../assets/images/tick-logo.png";
 
 const HeroSection = () => {
+  const [doctorSearch, setDoctorSearch] = useState([]);
+
   return (
-    <div className="w-full  relative font-poppins py-32 ">
+    <div className="overflow-x-hidden w-full  relative font-poppins pt-32 ">
       <div className=" w-10/12 mx-auto flex flex-col items-center justify-center ">
         {/* HEADING LINE */}
         <div className=" text-center flex flex-col gap-2">
-          <h1 className="text-5xl font-thin ">Book n Meet a Doctor</h1>
+          <h1 className="text-5xl  ">Book n Meet a Doctor</h1>
           <h3 className="text-xl ">
             Best Online Appointment Scheduling Platform
           </h3>
@@ -16,6 +20,9 @@ const HeroSection = () => {
         {/* SEARCH BOX */}
         <div className=" mt-16 flex gap-4">
           <input
+            onChange={(e) => {
+              setDoctorSearch(e.target.value);
+            }}
             className="w-96 py-2 rounded-md border border-green-500 bg-slate-50"
             type="text"
             placeholder="Search for Doctors"

@@ -3,12 +3,14 @@ import ReactDom from "react-dom/client";
 
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
+import Body from "./components/Body";
 
 const AppLayout = () => {
   return (
     <>
       <Header />
       <HeroSection />
+      <Body />
     </>
   );
 };
