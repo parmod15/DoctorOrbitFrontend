@@ -1,7 +1,5 @@
-// API CALL FUNCTION
-export async function getAllDoctors(setDoctor, setFilteredDoctor) {
-  const response = await fetch("http://localhost:3000/api/v1/doctors");
-  const result = await response.json();
-  setDoctor(result.data);
-  setFilteredDoctor(result.data);
-}
+// export function filterationOfDoctor(searchedDoctor, allDoctors, setDoctor) {
+//   allDoctors.forEach((element) => {
+//     return element?.name == searchedDoctor ? setDoctor([element]) : null;
+//   });
+// }
