@@ -6,6 +6,8 @@ import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import Body from "./components/Body";
 import ErrorElement from "./components/ErrorElement";
+import DoctorDetail from "./components/DoctorDetail";
+import Footer from "./components/Footer";
 
 const AppLayout = () => {
   return (
@@ -13,6 +15,7 @@ const AppLayout = () => {
       <Header />
       <Outlet />
       <Body />
+      <Footer />
     </>
   );
 };
@@ -32,6 +35,10 @@ const appRouter = createBrowserRouter([
         element: <Body />,
       },
     ],
+  },
+  {
+    path: "/doctor/:id",
+    element: <DoctorDetail />,
   },
 ]);
 

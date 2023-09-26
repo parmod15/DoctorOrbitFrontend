@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import useGetDoctors from "../utils/useGetDoctors";
 import useDoctorFilter from "../utils/useDoctorFilter";
@@ -19,7 +20,7 @@ const Body = () => {
   return filteredDoctor.length == 0 ? (
     <h1>loading.... </h1>
   ) : (
-    <div className="overflow-x-hidden border border-green-500 w-full relative font-poppins pt-32">
+    <div className="overflow-x-hidden w-full relative font-poppins pt-32">
       <div className="w-10/12 mx-auto flex flex-col ">
         <h1 className="text-5xl text-center">Book Our Doctor</h1>
         <h3 className="text-3xl text-center mt-4">
@@ -50,7 +51,9 @@ const Body = () => {
         <div className="w-full bg-slate-100">
           <div className="w-10/12 mx-auto justify-between flex flex-wrap gap-10 ">
             {filteredDoctor.map((doc) => (
-              <DoctorCard {...doc} key={doc.id} />
+              <Link to={"/doctor/" + doc.id}>
+                <DoctorCard {...doc} key={doc.id} />
+              </Link>
             ))}
           </div>
         </div>
