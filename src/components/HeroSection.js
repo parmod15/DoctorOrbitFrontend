@@ -1,10 +1,10 @@
+import { Link } from "react-router-dom";
 
 import fieldsLogo1 from "../assets/images/doctors-fields-logo.png";
 import fieldsLogo2 from "../assets/images/doctors-fields-logo-2.png";
 import check from "../assets/images/tick-logo.png";
 
 const HeroSection = () => {
-
   return (
     <>
       <div className="overflow-x-hidden w-full  relative font-poppins pt-32 ">
@@ -55,15 +55,16 @@ const HeroSection = () => {
                   100% Private and Confidentail
                 </li>
               </ul>
-              <button className="mt-4 text-green-500 border w-32 py-2 rounded-full px-4  border-green-500  ">
-                Consult now
-              </button>
+
+              <Link to={"/book-now"}>
+                <button className="hover:bg-green-500 hover:text-white transition-all duration-500 mt-4 text-green-500 border w-32 py-2 rounded-full px-4  border-green-500  ">
+                  Consult now
+                </button>
+              </Link>
             </div>
           </div>
         </div>
       </div>
-
-     
     </>
   );
 };
