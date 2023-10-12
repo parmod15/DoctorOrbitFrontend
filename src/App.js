@@ -14,7 +14,7 @@ const AppLayout = () => {
     <>
       <Header />
       <Outlet />
-      <Body />
+      {/* <Body /> */}
       <Footer />
     </>
   );
@@ -30,16 +30,18 @@ const appRouter = createBrowserRouter([
         path: "",
         element: <HeroSection />,
       },
+
       {
         path: "book-now",
         element: <Body />,
       },
+      {
+        path: "/doctor/:id",
+        element: <DoctorDetail />,
+      },
     ],
   },
-  {
-    path: "/doctor/:id",
-    element: <DoctorDetail />,
-  },
+  {},
 ]);
 
 const root = ReactDom.createRoot(document.querySelector("#root"));

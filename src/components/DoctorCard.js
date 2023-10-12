@@ -1,3 +1,5 @@
+import { BrowserRouter, Link } from "react-router-dom";
+
 import doctorThumbnail from "../assets/images/doctor-image-thumbnail.jpg";
 import starLogo from "../assets/images/rating-star.jpg";
 import locationLogo from "../assets/images/location-logo.png";
@@ -19,9 +21,9 @@ const DoctorCard = ({
   );
 
   return (
-    <div className="shadow-lg mx-2  bg-white border  py-4  w-3/12 font-poppins">
+    <div className="shadow-lg mx-2  bg-white   py-4  w-12/12 font-poppins">
       <img className="w-40" src={doctorThumbnail}></img>
-      <div className=" w-40 h-40 mx-auto">
+      <div className=" w-40 h-40 mx-auto ">
         <h1>{name}</h1>
         <h1>{speciality}</h1>
         <h1 className="flex">
@@ -33,6 +35,7 @@ const DoctorCard = ({
           {city}
         </h1>
       </div>
+      <Link to={"/doctor/" + id}></Link>
       <button className="bg-green-500 text-white px-8 py-2 rounded-sm">
         View Profile
       </button>

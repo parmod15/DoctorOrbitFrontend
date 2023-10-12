@@ -5,6 +5,7 @@ import useGetDoctors from "../utils/useGetDoctors";
 import useDoctorFilter from "../utils/useDoctorFilter";
 
 import DoctorCard from "./DoctorCard";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [doctorSearch, setDoctorSearch] = useState([]);
@@ -18,7 +19,7 @@ const Body = () => {
   if (!filteredDoctor) return;
 
   return filteredDoctor.length == 0 ? (
-    <h1>loading.... </h1>
+    <Shimmer />
   ) : (
     <div className="overflow-x-hidden w-full relative font-poppins pt-32">
       <div className="w-10/12 mx-auto flex flex-col ">
