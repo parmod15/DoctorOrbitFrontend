@@ -12,15 +12,14 @@ const DoctorDetail = () => {
   const [age, setAge] = useState(null);
   const [mobileNo, setMobileNo] = useState(null);
 
-  console.log(firstName);
-
-  async function getBooking(firstName, age, mobileNo) {
-    const data = await fetch("url", {
+  async function getBooking(firstName, age, mobileNo, id) {
+    const data = await fetch("http://localhost:3002/api/v1/create-booking", {
       method: "POST",
       body: JSON.stringify({
         patientName: firstName,
         patientAge: age,
         patientMobile: mobileNo,
+        doctorId: id,
       }),
       headers: {
         "content-type": "application/json; charset=UTF-8",
@@ -73,17 +72,20 @@ const DoctorDetail = () => {
             type="text"
             placeholder="Enter Your First Name"
           ></input>
+
           <input
             className="py-2 border border-emerald-500 rounded-md"
             type="text"
             placeholder="Enter your Last Name"
           ></input>
+
           <input
             onChange={(e) => setAge(e.target.value)}
             className="py-2 border border-emerald-500 rounded-md"
             type="text"
             placeholder="Enter Your Age"
           ></input>
+
           <input
             onChange={(e) => setMobileNo(e.target.value)}
             className="  py-2 border border-emerald-500 rounded-md"
@@ -101,14 +103,21 @@ const DoctorDetail = () => {
           </div>
 
           <div>Your Total Cost - {doctor.fees}Rs</div>
+
+          {/* SUBMIT BUTTON */}
           <button
-            onClick={() => getBooking(firstName, age, mobileNo)}
+            onClick={(e) => {
+              e.preventDefault();
+              getBooking(firstName, age, mobileNo, id);
+            }}
             className="bg-green-500 w-32 py-2 text-white"
           >
             Submit
           </button>
         </form>
       </div>
+
+      {/*  */}
     </div>
   );
 };
