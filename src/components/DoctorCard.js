@@ -22,7 +22,7 @@ const DoctorCard = ({
       <img className="w-40 mx-auto" src={doctorThumbnail}></img>
       <div className=" w-40  mx-auto flex flex-col items-start ">
         <h1 className=" w-44">{name}</h1>
-        <h1 className="text-sm">{speciality}</h1>
+        <h1 className="text-sm bg-green-200 px-2 py-1">{speciality}</h1>
         <div className="flex">
           <img className="-ml-2 w-8 h-6" src={starLogo}></img>
           <h1>{rating}</h1>

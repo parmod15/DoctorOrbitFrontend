@@ -3,6 +3,8 @@ import { useState } from "react";
 
 import useGetDoctorDetail from "../utils/useGetDoctorDetail";
 
+import doctorThumbnail from "../assets/images/doctor-image-thumbnail.jpg";
+
 const DoctorDetail = () => {
   const params = useParams();
   const id = params.id;
@@ -11,9 +13,10 @@ const DoctorDetail = () => {
   const [firstName, setFirstName] = useState("");
   const [age, setAge] = useState(null);
   const [mobileNo, setMobileNo] = useState(null);
+  const [bookingResponse, setBookingResponse] = useState("");
 
   async function getBooking(firstName, age, mobileNo, id) {
-    const data = await fetch("http://localhost:3002/api/v1/create-booking", {
+    const data = await fetch("http://localhost:3002/api/v1/create-bookings", {
       method: "POST",
       body: JSON.stringify({
         patientName: firstName,
@@ -27,45 +30,72 @@ const DoctorDetail = () => {
     });
 
     const response = await data.json();
-    console.log("api post req. ", response);
+    setBookingResponse(response.message);
+    // console.log("api post req. ", response);
   }
 
   return (
-    <div className="w-full bg-slate-200 font-poppins">
-      {/* DOCTOR CARD  */}
-      <div>
-        <h1>{doctor.name}</h1>
-        <h1>{doctor.speciality}</h1>
-        <h1>{doctor.fees}</h1>
-        <h1>{doctor.description}</h1>
-        <h1>{doctor.rating}</h1>
-        <h1>{doctor.address}</h1>
-        <button
+    <div className="w-full  font-poppins relative">
+      {/*  BOOKING RESPONSE  */}
+      <div className=" w-full responseWindow flex relative scale-0 justify-between scale transition-all duration-500 py-4 bg-green-300 text-white">
+        {bookingResponse}
+
+        {/* CLOSE WINDOW BTN */}
+        <div
           onClick={() => {
-            document.querySelector(".form-window").classList.remove("scale-0");
-            document.querySelector(".close-btn").classList.remove("scale-0");
+            document.querySelector(".responseWindow").classList.add("scale-0");
           }}
-          className="w-32 py-2 text-white bg-green-500"
+          className="cursor-pointer   font-extrabold px-2  text-red-500 text-lg "
         >
-          Book Now
-        </button>
+          CLOSE
+        </div>
+      </div>
+
+      {/* DOCTOR CARD  */}
+      <div className=" doctor-card relative py-12 w-10/12 mx-auto  flex justify-between gap-4 transition-all duration-500">
+        {/* DOCTOR DETAILS */}
+        <div className="w-7/12  flex flex-col gap-5 p-8">
+          <button
+            onClick={() => {
+              document
+                .querySelector(".form-window")
+                .classList.remove("scale-0");
+              document.querySelector(".doctor-card").classList.add("blur-lg");
+              document.querySelector(".close-btn").classList.remove("scale-0");
+            }}
+            className="w-32 py-2 text-white bg-green-500 hover:text-green-500 hover:bg-white transition-all duration-500"
+          >
+            Book Now
+          </button>
+          <h1 className="text-2xl">{doctor.name}</h1>
+          <h1 className="text-xl bg-green-200 w-40">{doctor.speciality}</h1>
+          <h1 className="text-xl">Feess - {doctor.fees}</h1>
+          <h1 className="w-10/12 text-lg">{doctor.description}</h1>
+          <h1 className="text-xl">{doctor.rating} Avg. Ratings</h1>
+          <h1 className="text-xl">Clinic - {doctor.address}</h1>
+        </div>
+
+        {/*  DOCTOR IMAGE */}
+        <div className=" w-4/12 ">
+          <img className="w-full h-full" src={doctorThumbnail}></img>
+        </div>
       </div>
 
       {/* FORM FOR BOOKING */}
-      <div className="w-5/12 relative mx-auto ">
+      <div className=" w-5/12  mx-auto form-window  scale-0 absolute top-20  left-20 transition-all duration-500  ">
         {/* CLOSE FORM WINDOW BTN  */}
         <div
           onClick={() => {
-            console.log("click");
             document.querySelector(".close-btn").classList.add("scale-0");
+            document.querySelector(".doctor-card").classList.remove("blur-lg");
             document.querySelector(".form-window").classList.add("scale-0");
           }}
-          className="close-btn font-bold px-2 text-white bg-red-500 text-lg absolute top-0 right-0"
+          className="cursor-pointer close-btn scale-0 font-bold px-2 text-white bg-red-500 text-lg absolute top-0 right-0"
         >
           X
         </div>
 
-        <form className=" form-window transition-all duration-500 p-8 bg-white rounded-xl flex flex-col justify-between gap-4 ">
+        <form className="  p-8 bg-white rounded-xl flex flex-col justify-between gap-4 ">
           <input
             onChange={(e) => setFirstName(e.target.value)}
             className="py-2 border border-emerald-500 rounded-md"
@@ -108,6 +138,15 @@ const DoctorDetail = () => {
           <button
             onClick={(e) => {
               e.preventDefault();
+              document.querySelector(".close-btn").classList.add("scale-0");
+              document
+                .querySelector(".doctor-card")
+                .classList.remove("blur-lg");
+              document.querySelector(".form-window").classList.add("scale-0");
+              document
+                .querySelector(".responseWindow")
+                .classList.remove("scale-0");
+
               getBooking(firstName, age, mobileNo, id);
             }}
             className="bg-green-500 w-32 py-2 text-white"
@@ -116,8 +155,6 @@ const DoctorDetail = () => {
           </button>
         </form>
       </div>
-
-      {/*  */}
     </div>
   );
 };
