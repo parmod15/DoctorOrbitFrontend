@@ -50,9 +50,9 @@ const Body = () => {
 
         {/* ALL DOCTORS HERE */}
         <div className="w-full bg-slate-100">
-          <div className="w-10/12 mx-auto justify-between flex flex-wrap gap-10 ">
+          <div className="py-12 w-10/12 mx-auto justify-between flex flex-wrap gap-10 ">
             {filteredDoctor.map((doc) => (
-              <Link to={"/doctor/" + doc.id}>
+              <Link className=" w-3/12" to={"/doctor/" + doc.id}>
                 <DoctorCard {...doc} key={doc.id} />
               </Link>
             ))}
