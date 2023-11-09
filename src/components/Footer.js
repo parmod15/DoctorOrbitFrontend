@@ -2,8 +2,8 @@ import titleLogo from "../assets/images/title-logo.png";
 
 const Footer = () => {
   return (
-    <div className="  bg-gradient-to-r from-blue-500 to-green-300 py-12 w-full font-poppins px-4 flex justify-between ">
-      <div className="bg-white w-3/12">
+    <div className="  bg-gradient-to-r from-cyan-500 to-blue-500 py-12 w-full font-poppins px-4 flex justify-between ">
+      <div className="text-white w-3/12">
         <img className="w-56" src={titleLogo}></img>
         <p className="py-2">
           DoctorOrbit is a registered start up company empanelled with 20 plus
@@ -12,7 +12,7 @@ const Footer = () => {
         <div>----social logos here</div>
       </div>
 
-      <div className="bg-white w-3/12">
+      <div className="text-white w-3/12">
         <h1 className="py-3 text-2xl font-bold">For Information</h1>
         <div className="flex flex-col gap-2">
           <p>About Us</p>
@@ -24,7 +24,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="bg-white w-3/12">
+      <div className="text-white w-3/12">
         <h1 className="py-3 text-2xl font-bold">Helpfull Links</h1>
         <div className="flex flex-col gap-2">
           <p>Book Appointment Us</p>
@@ -34,7 +34,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="bg-white w-3/12">
+      <div className="text-white w-3/12">
         <h1 className="py-3 text-2xl font-bold">Contact Us</h1>
         <div className="flex flex-col gap-2">
           <p>DoctorOrbit Consultancy Pvt. Ltd. Jammu , Jammu And Kashmir</p>
